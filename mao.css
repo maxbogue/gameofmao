@@ -1,0 +1,87 @@
+body {
+    background-color:#000;
+    color:#08C;
+    font-family:Verdana;
+    font-size:12px;
+    overflow:scroll;
+    padding-bottom:35px;
+    text-align:center;
+}
+#header {
+    color:#CF0;
+    cursor:default;
+    font-family:Verdana;
+    font-size:100px;
+    margin-top:250px;
+    margin-bottom:-20px;
+}
+#content {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:-8px;
+    padding:0px;
+    width:650px;
+}
+#nav {
+    cursor:default;
+    font-size:32px;
+    font-weight:bold;
+    margin-top:0px;
+}
+.navlink {
+    font-family:"Futura";
+    font-weight:bold;
+    color:#F0A;
+    cursor:pointer;
+    text-decoration:none;
+}
+.navlink:hover {
+    color:#0CF;
+}
+.section {
+    display:none;
+}
+p {
+    color:#0CF;
+    font-family:;
+    font-size:14px;
+    font-weight:normal;
+}
+.section h1 {
+    color:#0CF;
+    font-family:Futura, "Courier New";
+    font-size:32px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+}
+.rule {
+    margin-top:25px;
+    cursor:default;
+}
+.rule h2 {
+    color:#F0A;
+    display:inline;
+    font-family:"Copperplate", "Bank Gothic", Helvetica, Verdana;
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:0px;
+}
+.rule .hasNotes:hover {
+    color:#0CF;
+}
+.rule p {
+    color:#CF0;
+    font-size:14px;
+    font-weight:bold;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.rule ul {
+    color:#0CF;
+    display:none;
+    font-size:9px;
+    font-weight:bold;
+    list-style:none;
+    margin-top:5px;
+    padding:0px;
+}
