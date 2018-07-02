@@ -1,319 +1,326 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="Author" content="Elnaril">
-        <title>Game of Mao</title>
-        <link href="mao.css" type="text/css" rel="stylesheet">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready( function() {
-                $('.rule:has(ul) h2').addClass('hasNotes');
-                $('.rule:has(ul) h2').click( function() {
-                    toggleNotes(this);
-                });;
-            });
-            function toggleSection(id) {
-                if ( $('.section').is(':visible') ) {
-                    if ( $(id).is(':hidden') ) {
-                        $('.section:visible').hide();
-                        $(id).fadeIn(700);
-                    } else {
-                        $('#header').animate({marginTop:'250px'}, 700);
-                        $(id).fadeOut(700);
-                    }
-                } else {    
-                    $('#header').animate({marginTop:'0px'}, 700);
-                    $(id).fadeIn(700);
-                }
-            }
-            function toggleNotes(name) {
-                var noteList = $('#' + name.parentElement.id + ' ul');
-                if ( noteList.is(':hidden') ) {
-                    noteList.slideDown('slow');
-                } else {
-                    noteList.slideUp('slow');
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <div id="content">
-            <h1 id="header">Mao</h1>
-            <p id="nav">
-                <span class="navlink" onclick="toggleSection('#about');">About</span>
-                <span class="navlink" onclick="toggleSection('#morerules');">&bull;</span>
-                <span class="navlink" onclick="toggleSection('#rules');">Rules</span>
-            </p>
-            <div class="section" id="about">
-                <h1>Intro</h1>
-                <p style="color:#CF0">Mao is the greatest card game in existence.</p>
-                <p style="color:#F0A">To play Mao, you need a group of awesome people and one deck of cards per 3-4 people in the group (a minimum of two decks).</p>
-                <p style="color:#CF0">The goal of Mao is to get rid of all of your cards.</p>
-                <p style="color:#F0A">To play a card, it must match the suit or rank of the active card (the last card played).</p>
-                <p style="color:#CF0">Jokers (if you choose to use them) may only be played on top of face cards and have no effect on the active suit.  You may not two-it a Joker.</p>
-                <h1>Starting</h1>
-                <p>To begin a game of Mao, one player is chosen as the dealer.  The dealer then deals each player seven cards.  Other players may not touch any cards before the game begins; doing so results in a penalty.  The dealer then names a player and a direction (clockwise or counter-clockwise), turns over the top card of the deck, and the game begins.</p>
-                <h1>Penalties</h1>
-                <p>The heart of Mao lies in its dynamic <span class="navlink" onclick="toggleSection('#rules');">Rules</span> and avoiding the penalties for breaking them.  Any time a player breaks one of the rules, it is up to the other players to catch it.  They must then say "penalty for", followed by an explanation of the action that broke the rule (but not necessarily the rule itself).  The player must then take one card as their penalty.
-                <h1>Point of Order</h1>
-                <p>A player may call "point of order" at any point during the game.  All players must immediately put their hand down; you may not touch any cards besides the draw stack and discard pile.  During a Point of Order, all verbal rules are suspended (unless specified otherwise).  A Point of Order may only be ended by the person that started it saying "end point of order".</p>
-                <h1>Winning the Game</h1>
-                <p>To win a game of Mao, a player must play their last card without breaking any rules and say "Mao", unless the last card is a Jack, in which case they must say "Mao Mao".  If they fail to do this, or break any other rules during the play, they must draw one card, take back their winning card, and forfeit their turn.</p>
-                
-            </div>
-            <div class="section" id="rules">
-                <div class="rule" id="thanks">
-                    <h2>Where Are Your Manners?</h2>
-                    <p>Any time you receive a penalty, you must thank the player that gave it to you.</p>
-                    <ul>
-                        <li>This rule can be applied repeatedly as long as there is no thank you.</li>
-                        <li>In cases where a player receives multiple penalties at once, one thank you suffices.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="skip">
-                    <h2>Hop, Skip and a Jump</h2>
-                    <p>Aces skip the next player's turn.</p>
-                </div>
-                <div class="rule" id="playagain">
-                    <h2>Play It Again, Sam</h2>
-                    <p>Twos let you play again.</p>
-                    <ul>
-                        <li>You MUST be able to play another card; drawing is not an option.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="drawtwo">
-                    <h2>Have A Nice Day</h2>
-                    <p>Sevens cause the next player to draw two cards and lose their turn.</p>
-                </div>
-                <div class="rule" id="reverse">
-                    <h2>About-Face</h2>
-                    <p>Eights reverse the direction of play.</p>
-                </div>
-                <div class="rule" id="wilds">
-                    <h2>Wild Boys</h2>
-                    <p>Jacks are wild cards.</p>
-                    <ul>
-                        <li>A suit must be called before the card is placed, otherwise any player can call out the suit.</li>
-                        <li>The first suit called is active.  A player may not change their mind.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="joker">
-                    <h2>Joke's On You</h2>
-                    <p>A Joker may be played to divert any card-induced draw, forcing all players to draw their contribution to the draw total.</p>
-                    <ul>
-                        <li>The Joker may not be played to divert any penalty draw or any draw caused by another Joker.</li>
-                        <li>Example: If a Joker is used to break a Seven chain, each player must draw two cards for every Seven they played.</li>
-                        <li>When used for this purpose, a Joker may be played on top of any other card.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="pofo">
-                    <h2>What Order?</h2>
-                    <p>Players can trigger a Point of Order by saying "point of order".  See notes.</p>
-                    <ul>
-                        <li>Players must lay down their cards and not touch them during a Point of Order.</li>
-                        <li>Verbal rules are suspended during a Point of Order (notably: the no questions rule).</li>
-                        <li>A Point of Order can only be ended by the person who started it.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="noquestions">
-                    <h2>Wh- Nevermind.</h2>
-                    <p>Players may not ask any questions.</p>
-                    <ul>
-                        <li>This includes questions unrelated to the game.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="ofspades">
-                    <h2>Blank of Spades</h2>
-                    <p>The rank of the card followed by "of Spades" must be announced when playing any Spade.</p>
-                </div>
-                <div class="rule" id="onecard">
-                    <h2>Last Chance</h2>
-                    <p>A player must announce "one card" any time their hand dwindles to one card.</p>
-                    <ul>
-                        <li>Example: If a player with one card drew a card and was able to play it immediately,<br>they would have to call "one card" again.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="twoit">
-                    <h2>Do It Two It</h2>
-                    <p>A card that matches both suit and rank of the current card may be played out of turn by announcing "two-it".</p>
-                    <ul>
-                        <li>Play continues in the same direction but from the player that two-it'd.</li>
-                        <li>If there are more than two decks in play, this rule extends to "three-it", etc.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="stackingsevens">
-                    <h2>Accumulation Sensation</h2>
-                    <p>Instead of drawing cards from a Seven, a player may play another Seven and pass the cumulative burden on to the next player.</p>
-                    <ul>
-                        <li>The draw total is added; a run of three sevens would result in a player drawing six cards.</li>
-                        <li>Works in conjunction with Two-It as well.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="sayingmao">
-                    <h2>Paranoid Chairman</h2>
-                    <p>Speaking the word "Mao" while a game is in progress results in a FIVE card penalty.</p>
-                </div>
-                <div class="rule" id="jackonjack">
-                    <h2>Jacktion</h2>
-                    <p>Playing a Jack on top of a Jack is forbidden and may result in verbal and physical abuse as well as a THREE card penalty.</p>
-                    <ul>
-                        <li>The player loses their turn and the Jack gets discarded.</li>
-                    </ul>
-                </div>
-                <br><p>Click on rules that turn <span style="color:#CF0">green</span> when you mouse over them to see notes.</p>
-                <p>Click on the &bull; at the top of the page for <span class="navlink" onclick="toggleSection('#morerules');">Advanced Rules</span>.</p>
-            </div>
-            <div class="section" id="morerules">
-                <h1>Advanced Rules</h1>
-                <p>In the advanced form of Mao, any time a player wins a round they get to add a new rule to the game.  The rule can be anything, as long as it is completely unbiased.  They do not have to tell the other players what the rule is, but in some cases it would be wise to.  Here is a collection of some favorite rules to implement.</p>
-                <div class="rule" id="foursuit">
-                    <h2>Fours of a Color</h2>
-                    <p>Fours change the active suit to the other of the same color.</p>
-                    <ul>
-                        <li>You may still Two-It an identical Four.</li>
-                        <li>Variant: Pair Spades/Hearts and Clubs/Diamonds.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="splubs">
-                    <h2>Splubs and Clades</h2>
-                    <p>The names of the suits Spades and Clubs are switched.  Any time you would refer to one you must say the other.</p>
-                    <ul>
-                        <li>Variant: Switch Hearts and Diamonds, with a "Blank of Hearts" rule.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="sixtynine">
-                    <h2>Naughty Naughty</h2>
-                    <p>Any player may play a Nine on top of a Six at any time by calling "Sixty-Nine'd".</p>
-                    <ul>
-                        <li>Play skips to the player of the Nine and continues from there.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="savecard">
-                    <h2>Save It For Later</h2>
-                    <p>The first card dealt to each player remains face down until they run out of other cards.</p>
-                    <ul>
-                        <li>The face down card still counts as part of your hand.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="fuckyou">
-                    <h2>I'd Rather You Didn't</h2>
-                    <p>When a Ten is played, the player gives any one of their cards to a player of their choice and says "fuck you".
-                </div>
-                <div class="rule" id="captainplanet">
-                    <h2>By Your Powers Combined</h2>
-                    <p>Threes now reverse direction, skip, and then induce a two card draw.</p>
-                    <ul>
-                        <li>You may not pass the draw from a Three on to another player.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="moo">
-                    <h2>Bovine Royalty</h2>
-                    <p>Players must moo whenever they play any face card.</p>
-                    <ul>
-                        <li>Saying "moo" is not sufficient; you must actually moo.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="switchhands">
-                    <h2>By Order of the King</h2>
-                    <p>The King of Hearts allows you to switch hands with another player of your choosing.</p>
-                    <ul>
-                        <li>Any penalties that the player incurs on the same turn as playing the Suicide King, before or after it is played, go to their new hand.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="cardrotation">
-                    <h2>Pick A Card, Any Card</h2>
-                    <p>Any time a Five is played, each player draws a card at random from the hand of the player to their left.</p>
-                    <ul>
-                        <li>As a limiter for repeated drawing, Fives played on top of other Fives do nothing.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="permaskip">
-                    <h2>Deck Full of Aces</h2>
-                    <p>Play now skips a player every turn if there are an odd number of players.</p>
-                    <ul>
-                        <li>Any other rule that induces a skip stacks with this one.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="hailtheking">
-                    <h2>All Hail The King</h2>
-                    <p>Any time a King is played, the player must say "All Hail the King of", followed by the suit.</p>
-                </div>
-                <div class="rule" id="gimpjacks">
-                    <h2>Gimp Cyclopes</h2>
-                    <p>One-eyed Jacks are no longer wild.</p>
-                </div>
-                <div class="rule" id="noswearing">
-                    <h2>Gosh Darn It</h2>
-                    <p>Swearing is prohibited.</p>
-                </div>
-                <div class="rule" id="nopofo">
-                    <h2>Better Pay Attention</h2>
-                    <p>There is a one card penalty for calling a Point of Order.</p>
-                </div>
-                <div class="rule" id="flipflop">
-                    <h2>Flip-Flop</h2>
-                    <p>Every time a card is played, the suit flips to the opposite suit of the same color.</p>
-                </div>
-                <div class="rule" id="incentive">
-                    <h2>A Little Incentive</h2>
-                    <p>Penalty cards are now given from the hand of the person that called the penalty.</p>
-                </div>
-                <div class="rule" id="doubledraw">
-                    <h2>Side Effect</h2>
-                    <p>When drawing a card instead of playing, you must draw the preceding player a card as well.</p>
-                    <ul>
-                        <li>Preceding means the player opposite the direction of play from you, even if they did not play the last card.</li>
-                        <li>The preceding player may not play their card immediately.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="crackdown">
-                    <h2>Waste Not</h2>
-                    <p>A player may not say the name of a card when playing it unless required to by another rule.</p>
-                </div>
-                <div class="rule" id="backcolor">
-                    <h2>Racial Identity</h2>
-                    <p>When playing a Five, the player must say the (primary) color of the BACK of the card.</p>
-                </div>
-                <div class="rule" id="doublerank">
-                    <h2>Math Is Hard, Let's Go Shopping</h2>
-                    <p>The ranks of numbered cards are doubled.</p>
-                </div>
-                <div class="rule" id="">
-                    <h2>Elitist Kings</h2>
-                    <p>Only face cards and Jokers can be played on Kings, but they can be played regardless of suit.</p>
-                </div>
-                <div class="rule" id="royalsuits">
-                    <h2>Royal Suits</h2>
-                    <p>Spades, Hearts, Clubs and Diamonds are renamed to Kings, Queens, Jacks and Jokers, respectively.</p>
-                </div>
-                <div class="rule" id="nameless">
-                    <h2>Nameless Solders</h2>
-                    <p>Saying the name of any player is forbidden.</p>
-                </div>
-                <div class="rule" id="hawtlesbianaction">
-                    <h2>Sapphic Queens</h2>
-                    <p>When a Queen is played on top of another Queen, the player gets to discard an additional card from their hand.</p>
-                    <ul>
-                        <li>Playing the bonus card is mandatory.</li>
-                        <li>A card may not be discarded after a penalty has been given for not doing it.</li>
-                        <li>The discarded card has no special effects, but it does change the active suit and rank.</li>
-                    </ul>
-                </div>
-                <div class="rule" id="weaktwoits">
-                    <h2>Remember Your Roots</h2>
-                    <p>Two-Its no longer affect the order of play.</p>
-                </div>
-                <div class="rule" id="stackingaces">
-                    <h2>Ludicrous Speed</h2>
-                    <p>Aces now stack; that is, they skip a number of player equal to the number of consecutively played Aces.</p>
-                </div>
-                <div class="rule" id="lsd">
-                    <h2>Lucy In The Sky With Diamonds</h2>
-                    <p>When the Queen of Diamonds is played, the player must say "LSD".</p>
-                </div>
-                <br><p>Click on rules that turn <span style="color:#CF0">green</span> when you mouse over them to see notes.</p>
-            </div>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Author" content="Elnaril">
+    <title>Game of Mao</title>
+    <link href="mao.css" type="text/css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16689044-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-16689044-1');
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready( function() {
+        $('.rule:has(ul) h2').addClass('hasNotes');
+        $('.rule:has(ul) h2').click( function() {
+          toggleNotes(this);
+        });;
+      });
+      function toggleSection(id) {
+        if ( $('.section').is(':visible') ) {
+          if ( $(id).is(':hidden') ) {
+            $('.section:visible').hide();
+            $(id).fadeIn(700);
+          } else {
+            $('#header').animate({marginTop:'250px'}, 700);
+            $(id).fadeOut(700);
+          }
+        } else {
+          $('#header').animate({marginTop:'0px'}, 700);
+          $(id).fadeIn(700);
+        }
+      }
+      function toggleNotes(name) {
+        var noteList = $('#' + name.parentElement.id + ' ul');
+        if ( noteList.is(':hidden') ) {
+          noteList.slideDown('slow');
+        } else {
+          noteList.slideUp('slow');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <h1 id="header">Mao</h1>
+      <p id="nav">
+        <span class="navlink" onclick="toggleSection('#about');">About</span>
+        <span class="navlink" onclick="toggleSection('#morerules');">&bull;</span>
+        <span class="navlink" onclick="toggleSection('#rules');">Rules</span>
+      </p>
+      <div class="section" id="about">
+        <h1>Intro</h1>
+        <p style="color:#CF0">Mao is the greatest card game in existence.</p>
+        <p style="color:#F0A">To play Mao, you need a group of awesome people and one deck of cards per 3-4 people in the group (a minimum of two decks).</p>
+        <p style="color:#CF0">The goal of Mao is to get rid of all of your cards.</p>
+        <p style="color:#F0A">To play a card, it must match the suit or rank of the active card (the last card played).</p>
+        <p style="color:#CF0">Jokers (if you choose to use them) may only be played on top of face cards and have no effect on the active suit.  You may not two-it a Joker.</p>
+        <h1>Starting</h1>
+        <p>To begin a game of Mao, one player is chosen as the dealer.  The dealer then deals each player seven cards.  Other players may not touch any cards before the game begins; doing so results in a penalty.  The dealer then names a player and a direction (clockwise or counter-clockwise), turns over the top card of the deck, and the game begins.</p>
+        <h1>Penalties</h1>
+        <p>The heart of Mao lies in its dynamic <span class="navlink" onclick="toggleSection('#rules');">Rules</span> and avoiding the penalties for breaking them.  Any time a player breaks one of the rules, it is up to the other players to catch it.  They must then say "penalty for", followed by an explanation of the action that broke the rule (but not necessarily the rule itself).  The player must then take one card as their penalty.
+        <h1>Point of Order</h1>
+        <p>A player may call "point of order" at any point during the game.  All players must immediately put their hand down; you may not touch any cards besides the draw stack and discard pile.  During a Point of Order, all verbal rules are suspended (unless specified otherwise).  A Point of Order may only be ended by the person that started it saying "end point of order".</p>
+        <h1>Winning the Game</h1>
+        <p>To win a game of Mao, a player must play their last card without breaking any rules and say "Mao", unless the last card is a Jack, in which case they must say "Mao Mao".  If they fail to do this, or break any other rules during the play, they must draw one card, take back their winning card, and forfeit their turn.</p>
+      </div>
+      <div class="section" id="rules">
+        <div class="rule" id="thanks">
+          <h2>Where Are Your Manners?</h2>
+          <p>Any time you receive a penalty, you must thank the player that gave it to you.</p>
+          <ul>
+            <li>This rule can be applied repeatedly as long as there is no thank you.</li>
+            <li>In cases where a player receives multiple penalties at once, one thank you suffices.</li>
+          </ul>
         </div>
-    </body>
+        <div class="rule" id="skip">
+          <h2>Hop, Skip and a Jump</h2>
+          <p>Aces skip the next player's turn.</p>
+        </div>
+        <div class="rule" id="playagain">
+          <h2>Play It Again, Sam</h2>
+          <p>Twos let you play again.</p>
+          <ul>
+            <li>You MUST be able to play another card; drawing is not an option.</li>
+          </ul>
+        </div>
+        <div class="rule" id="drawtwo">
+          <h2>Have A Nice Day</h2>
+          <p>Sevens cause the next player to draw two cards and lose their turn.</p>
+        </div>
+        <div class="rule" id="reverse">
+          <h2>About-Face</h2>
+          <p>Eights reverse the direction of play.</p>
+        </div>
+        <div class="rule" id="wilds">
+          <h2>Wild Boys</h2>
+          <p>Jacks are wild cards.</p>
+          <ul>
+            <li>A suit must be called before the card is placed, otherwise any player can call out the suit.</li>
+            <li>The first suit called is active.  A player may not change their mind.</li>
+          </ul>
+        </div>
+        <div class="rule" id="joker">
+          <h2>Joke's On You</h2>
+          <p>A Joker may be played to divert any card-induced draw, forcing all players to draw their contribution to the draw total.</p>
+          <ul>
+            <li>The Joker may not be played to divert any penalty draw or any draw caused by another Joker.</li>
+            <li>Example: If a Joker is used to break a Seven chain, each player must draw two cards for every Seven they played.</li>
+            <li>When used for this purpose, a Joker may be played on top of any other card.</li>
+          </ul>
+        </div>
+        <div class="rule" id="pofo">
+          <h2>What Order?</h2>
+          <p>Players can trigger a Point of Order by saying "point of order".  See notes.</p>
+          <ul>
+            <li>Players must lay down their cards and not touch them during a Point of Order.</li>
+            <li>Verbal rules are suspended during a Point of Order (notably: the no questions rule).</li>
+            <li>A Point of Order can only be ended by the person who started it.</li>
+          </ul>
+        </div>
+        <div class="rule" id="noquestions">
+          <h2>Wh- Nevermind.</h2>
+          <p>Players may not ask any questions.</p>
+          <ul>
+            <li>This includes questions unrelated to the game.</li>
+          </ul>
+        </div>
+        <div class="rule" id="ofspades">
+          <h2>Blank of Spades</h2>
+          <p>The rank of the card followed by "of Spades" must be announced when playing any Spade.</p>
+        </div>
+        <div class="rule" id="onecard">
+          <h2>Last Chance</h2>
+          <p>A player must announce "one card" any time their hand dwindles to one card.</p>
+          <ul>
+            <li>Example: If a player with one card drew a card and was able to play it immediately,<br>they would have to call "one card" again.</li>
+          </ul>
+        </div>
+        <div class="rule" id="twoit">
+          <h2>Do It Two It</h2>
+          <p>A card that matches both suit and rank of the current card may be played out of turn by announcing "two-it".</p>
+          <ul>
+            <li>Play continues in the same direction but from the player that two-it'd.</li>
+            <li>If there are more than two decks in play, this rule extends to "three-it", etc.</li>
+          </ul>
+        </div>
+        <div class="rule" id="stackingsevens">
+          <h2>Accumulation Sensation</h2>
+          <p>Instead of drawing cards from a Seven, a player may play another Seven and pass the cumulative burden on to the next player.</p>
+          <ul>
+            <li>The draw total is added; a run of three sevens would result in a player drawing six cards.</li>
+            <li>Works in conjunction with Two-It as well.</li>
+          </ul>
+        </div>
+        <div class="rule" id="sayingmao">
+          <h2>Paranoid Chairman</h2>
+          <p>Speaking the word "Mao" while a game is in progress results in a FIVE card penalty.</p>
+        </div>
+        <div class="rule" id="jackonjack">
+          <h2>Jacktion</h2>
+          <p>Playing a Jack on top of a Jack is forbidden and may result in verbal and physical abuse as well as a THREE card penalty.</p>
+          <ul>
+            <li>The player loses their turn and the Jack gets discarded.</li>
+          </ul>
+        </div>
+        <br><p>Click on rules that turn <span style="color:#CF0">green</span> when you mouse over them to see notes.</p>
+        <p>Click on the &bull; at the top of the page for <span class="navlink" onclick="toggleSection('#morerules');">Advanced Rules</span>.</p>
+      </div>
+      <div class="section" id="morerules">
+        <h1>Advanced Rules</h1>
+        <p>In the advanced form of Mao, any time a player wins a round they get to add a new rule to the game.  The rule can be anything, as long as it is completely unbiased.  They do not have to tell the other players what the rule is, but in some cases it would be wise to.  Here is a collection of some favorite rules to implement.</p>
+        <div class="rule" id="foursuit">
+          <h2>Fours of a Color</h2>
+          <p>Fours change the active suit to the other of the same color.</p>
+          <ul>
+            <li>You may still Two-It an identical Four.</li>
+            <li>Variant: Pair Spades/Hearts and Clubs/Diamonds.</li>
+          </ul>
+        </div>
+        <div class="rule" id="splubs">
+          <h2>Splubs and Clades</h2>
+          <p>The names of the suits Spades and Clubs are switched.  Any time you would refer to one you must say the other.</p>
+          <ul>
+            <li>Variant: Switch Hearts and Diamonds, with a "Blank of Hearts" rule.</li>
+          </ul>
+        </div>
+        <div class="rule" id="sixtynine">
+          <h2>Naughty Naughty</h2>
+          <p>Any player may play a Nine on top of a Six at any time by calling "Sixty-Nine'd".</p>
+          <ul>
+            <li>Play skips to the player of the Nine and continues from there.</li>
+          </ul>
+        </div>
+        <div class="rule" id="savecard">
+          <h2>Save It For Later</h2>
+          <p>The first card dealt to each player remains face down until they run out of other cards.</p>
+          <ul>
+            <li>The face down card still counts as part of your hand.</li>
+          </ul>
+        </div>
+        <div class="rule" id="fuckyou">
+          <h2>I'd Rather You Didn't</h2>
+          <p>When a Ten is played, the player gives any one of their cards to a player of their choice and says "fuck you".
+        </div>
+        <div class="rule" id="captainplanet">
+          <h2>By Your Powers Combined</h2>
+          <p>Threes now reverse direction, skip, and then induce a two card draw.</p>
+          <ul>
+            <li>You may not pass the draw from a Three on to another player.</li>
+          </ul>
+        </div>
+        <div class="rule" id="moo">
+          <h2>Bovine Royalty</h2>
+          <p>Players must moo whenever they play any face card.</p>
+          <ul>
+            <li>Saying "moo" is not sufficient; you must actually moo.</li>
+          </ul>
+        </div>
+        <div class="rule" id="switchhands">
+          <h2>By Order of the King</h2>
+          <p>The King of Hearts allows you to switch hands with another player of your choosing.</p>
+          <ul>
+            <li>Any penalties that the player incurs on the same turn as playing the Suicide King, before or after it is played, go to their new hand.</li>
+          </ul>
+        </div>
+        <div class="rule" id="cardrotation">
+          <h2>Pick A Card, Any Card</h2>
+          <p>Any time a Five is played, each player draws a card at random from the hand of the player to their left.</p>
+          <ul>
+            <li>As a limiter for repeated drawing, Fives played on top of other Fives do nothing.</li>
+          </ul>
+        </div>
+        <div class="rule" id="permaskip">
+          <h2>Deck Full of Aces</h2>
+          <p>Play now skips a player every turn if there are an odd number of players.</p>
+          <ul>
+            <li>Any other rule that induces a skip stacks with this one.</li>
+          </ul>
+        </div>
+        <div class="rule" id="hailtheking">
+          <h2>All Hail The King</h2>
+          <p>Any time a King is played, the player must say "All Hail the King of", followed by the suit.</p>
+        </div>
+        <div class="rule" id="gimpjacks">
+          <h2>Gimp Cyclopes</h2>
+          <p>One-eyed Jacks are no longer wild.</p>
+        </div>
+        <div class="rule" id="noswearing">
+          <h2>Gosh Darn It</h2>
+          <p>Swearing is prohibited.</p>
+        </div>
+        <div class="rule" id="nopofo">
+          <h2>Better Pay Attention</h2>
+          <p>There is a one card penalty for calling a Point of Order.</p>
+        </div>
+        <div class="rule" id="flipflop">
+          <h2>Flip-Flop</h2>
+          <p>Every time a card is played, the suit flips to the opposite suit of the same color.</p>
+        </div>
+        <div class="rule" id="incentive">
+          <h2>A Little Incentive</h2>
+          <p>Penalty cards are now given from the hand of the person that called the penalty.</p>
+        </div>
+        <div class="rule" id="doubledraw">
+          <h2>Side Effect</h2>
+          <p>When drawing a card instead of playing, you must draw the preceding player a card as well.</p>
+          <ul>
+            <li>Preceding means the player opposite the direction of play from you, even if they did not play the last card.</li>
+            <li>The preceding player may not play their card immediately.</li>
+          </ul>
+        </div>
+        <div class="rule" id="crackdown">
+          <h2>Waste Not</h2>
+          <p>A player may not say the name of a card when playing it unless required to by another rule.</p>
+        </div>
+        <div class="rule" id="backcolor">
+          <h2>Racial Identity</h2>
+          <p>When playing a Five, the player must say the (primary) color of the BACK of the card.</p>
+        </div>
+        <div class="rule" id="doublerank">
+          <h2>Math Is Hard, Let's Go Shopping</h2>
+          <p>The ranks of numbered cards are doubled.</p>
+        </div>
+        <div class="rule" id="">
+          <h2>Elitist Kings</h2>
+          <p>Only face cards and Jokers can be played on Kings, but they can be played regardless of suit.</p>
+        </div>
+        <div class="rule" id="royalsuits">
+          <h2>Royal Suits</h2>
+          <p>Spades, Hearts, Clubs and Diamonds are renamed to Kings, Queens, Jacks and Jokers, respectively.</p>
+        </div>
+        <div class="rule" id="nameless">
+          <h2>Nameless Solders</h2>
+          <p>Saying the name of any player is forbidden.</p>
+        </div>
+        <div class="rule" id="hawtlesbianaction">
+          <h2>Sapphic Queens</h2>
+          <p>When a Queen is played on top of another Queen, the player gets to discard an additional card from their hand.</p>
+          <ul>
+            <li>Playing the bonus card is mandatory.</li>
+            <li>A card may not be discarded after a penalty has been given for not doing it.</li>
+            <li>The discarded card has no special effects, but it does change the active suit and rank.</li>
+          </ul>
+        </div>
+        <div class="rule" id="weaktwoits">
+          <h2>Remember Your Roots</h2>
+          <p>Two-Its no longer affect the order of play.</p>
+        </div>
+        <div class="rule" id="stackingaces">
+          <h2>Ludicrous Speed</h2>
+          <p>Aces now stack; that is, they skip a number of player equal to the number of consecutively played Aces.</p>
+        </div>
+        <div class="rule" id="lsd">
+          <h2>Lucy In The Sky With Diamonds</h2>
+          <p>When the Queen of Diamonds is played, the player must say "LSD".</p>
+        </div>
+        <br><p>Click on rules that turn <span style="color:#CF0">green</span> when you mouse over them to see notes.</p>
+      </div>
+    </div>
+  </body>
 </html>
